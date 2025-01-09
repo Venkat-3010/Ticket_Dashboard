@@ -1,4 +1,4 @@
-import styles from "./BarChart.module.css";
+
 import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -25,12 +25,12 @@ ChartJS.register(
     ArcElement
 );
 
-const BarChart = ({ BarChartData }) => {
+const PieChart = ({pieChartData}) => {
   return (
-    <div className={styles.barChart_container}>
+    <div>
         
     </div>
   )
 }
 
-export default BarChart
+export default PieChart

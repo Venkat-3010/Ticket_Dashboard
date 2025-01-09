@@ -7,6 +7,7 @@ import cancelledTicketsImg from "../assets/cancelledTickets.png";
 import CustomCard from "../components/CustomCard/CustomCard";
 import { useEffect, useState } from "react";
 import Table from "../components/Table/Table";
+import LineChart from "../components/LineChart/LineChart";
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
@@ -51,6 +52,10 @@ const DashboardPage = () => {
       </div>
       <div>
         <Table tableData={data?.openTicketsList} />
+        <div className={styles.pie_bar_charts} style={{ display: 'flex', gap: '0.5rem'}}>
+          <LineChart lineChartData={data?.lineChart}/>
+          <LineChart lineChartData={data?.lineChart}/>
+        </div>
       </div>
     </main>
   )
