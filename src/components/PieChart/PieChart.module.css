@@ -1,0 +1,11 @@
+.pieChart_containerr{
+    background-color: white;
+    height: 375px;
+    margin-top: 1rem;
+    width: 490px;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

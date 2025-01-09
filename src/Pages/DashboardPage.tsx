@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Table from "../components/Table/Table";
 import LineChart from "../components/LineChart/LineChart";
 import BarChart from "../components/BarChart/BarChart";
+import PieChart from "../components/PieChart/PieChart";
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
@@ -49,6 +50,9 @@ const DashboardPage = () => {
           <CustomCard title={'Open Tickets'} color='#FF9066' countColor='#FFE3D9' count={data?.openTickets || 0} img={openTicketsImg} />
           <CustomCard title={'Closed Tickets'} color='#4AD991' countColor='#D1F5E3' count={data?.closeTickets || 0} img={closetTicketsImg} />
           <CustomCard title={'Cancelled Tickets'} color='#FEC53D' countColor='#FEF0CE' count={data?.cancelTickets || 0} img={cancelledTicketsImg} />
+        </div>
+        <div>
+          <PieChart pieChartData={data}/>
         </div>
       </div>
       <div>
