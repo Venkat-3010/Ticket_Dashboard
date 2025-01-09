@@ -1,5 +1,5 @@
 import { Card } from 'primereact/card'
-import styles from "./css/Card.module.css";
+import styles from "./CustomCard.module.css";
 
 interface CardProps {
     title: string;

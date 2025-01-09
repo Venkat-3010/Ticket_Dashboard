@@ -4,9 +4,12 @@ import controllerImg from "../assets/controller.png";
 import openTicketsImg from "../assets/openTickets.png";
 import closetTicketsImg from "../assets/closedTickets.png";
 import cancelledTicketsImg from "../assets/cancelledTickets.png";
-import CustomCard from "../components/Card";
+import CustomCard from "../components/CustomCard/CustomCard";
+import { useState } from "react";
 
 const DashboardPage = () => {
+  const [count, setCount] = useState('');
+
   return (
     <main className={styles.dashboadPage_container}>
       <div>
