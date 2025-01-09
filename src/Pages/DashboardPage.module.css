@@ -1,7 +1,10 @@
 .dashboadPage_container{
     padding: 1rem;
-    background-color: #f0f0f1;
+    background-color: #f4f7fe;
+    display: flex;
+    gap: 1rem;
     height: 100%;
+    width: 100vw;
 }
 
 .dashboardPage_logo{
