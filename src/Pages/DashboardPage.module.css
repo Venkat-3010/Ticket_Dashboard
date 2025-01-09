@@ -1,0 +1,38 @@
+.dashboadPage_container{
+    padding: 1rem;
+    background-color: #f0f0f1;
+    height: 100%;
+}
+
+.dashboardPage_logo{
+    width: 500px;
+    height: 100px;
+    background-color: #0073CF;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.dashboardPage_logo img{
+    width: 250px;
+    height: auto;
+}
+
+.dashboadPage_header{
+    font-size: 2rem;
+    text-align: center;
+    color: #0073CF;
+    padding: 1rem;
+    font-weight: 600;
+    width: 500px;
+}
+
+.dashboadPage_cards_container{
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
