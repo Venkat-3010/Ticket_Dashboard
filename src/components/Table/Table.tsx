@@ -26,39 +26,52 @@ const Table = () => {
     return () => clearInterval(scrollInterval);
   }, []);
 
-  const headerStyle = {
-    color: '#A3AED0',
-    fontWeight: 'bold',
-  }
-
   const convertDate = (rowData: []) => {
-    const date = new Date(rowData.shiftStartTime);
+    const date = new Date(rowData?.shiftStartDate);
     return date.toLocaleDateString();
-  }
-
-  const rowStyle = {
-    padding: '0.6rem',
-    color: '#2B3674',
   }
 
   return (
     <div className={styles.table_container}>
       <h2 className={styles.table_title}>Open tickets</h2>
       <div className={styles.scrollable_container} ref={scrollRef}>
-          <DataTable value={data} scrollable>
-            <Column
-              header="S no"
-              headerStyle={headerStyle}
-              body={(rowData, { rowIndex }) => rowIndex + 1}
-              style={rowStyle}
-            />
-            <Column field="deputyId" header="Ticket ID" headerStyle={headerStyle} style={rowStyle} />
-            <Column field="name" header="Employee name" headerStyle={headerStyle} style={rowStyle} />
-            <Column field="site" header="Site name" headerStyle={headerStyle} style={rowStyle} />
-            <Column field="shiftStartDate" header="Shift date" body={(rowData) => convertDate(rowData)} headerStyle={headerStyle} style={rowStyle} />
-            <Column field="shiftStartTime" header="Shift time" headerStyle={headerStyle} style={rowStyle} />
-            <Column field="cancellationReason" header="Reason" headerStyle={headerStyle} style={rowStyle} />
-          </DataTable>
+        <DataTable value={data} scrollable>
+          <Column
+            header="S no"
+            headerClassName={styles.table_header}
+            className={styles.table_row}
+            body={(rowData, { rowIndex }) => rowIndex + 1}
+          />
+          <Column
+            field="deputyId"
+            header="Ticket ID"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+          <Column
+            field="name"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+          <Column
+            field="site"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+          <Column
+            field="shiftStartDate"
+            header="Shift date"
+            body={(rowData) => convertDate(rowData)}
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+          <Column
+            field="shiftStartTime"
+            header="Shift time"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+          <Column
+            field="cancellationReason"
+            header="Reason"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
+        </DataTable>
       </div>
     </div>
   )
