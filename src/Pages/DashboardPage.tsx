@@ -46,8 +46,8 @@ const DashboardPage = () => {
 
   return (
     <main className={styles.dashboadPage_container}>
-      <div>
-        <div>
+      <div className={styles.dashboardPage_leftContainer}>
+        <div className={styles.dashboadPage_logo_container}>
           <div className={styles.dashboardPage_logo}>
             <img src={logo} alt="Logo" />
           </div>
@@ -61,13 +61,14 @@ const DashboardPage = () => {
           <CustomCard title={'Closed Tickets'} color='#4AD991' countColor='#D1F5E3' count={data?.closeTickets || 0} img={closetTicketsImg} />
           <CustomCard title={'Cancelled Tickets'} color='#FEC53D' countColor='#FEF0CE' count={data?.cancelTickets || 0} img={cancelledTicketsImg} />
         </div>
-        <div>
-          {data && <PieChart pieChartData={{ openTickets: data.openTickets, closeTickets: data.closeTickets, cancelTickets: data.cancelTickets }} />}
+        <div className={styles.dashboadPage_pieChart_container}>
+          {data ? <PieChart pieChartData={{ openTickets: data.openTickets, closeTickets: data.closeTickets, cancelTickets: data.cancelTickets }} /> : <></>}
         </div>
       </div>
-      <div>
-        <Table tableData={data?.openTicketsList} />
-        <div className={styles.pie_bar_charts} style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className={styles.dashboardPage_rightContainer}>
+        <Table />
+        {/* <Table tableData={data?.openTicketsList} /> */}
+        <div className={styles.dashboadPage_charts_container} >
           <LineChart lineChartData={data?.lineChart} />
           <BarChart barChartData={data?.barChart} />
         </div>

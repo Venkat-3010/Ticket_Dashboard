@@ -4,6 +4,17 @@ import styles from './Table.module.css';
 import data from '../../data/dummy_table_data.json';
 import { useEffect, useRef } from 'react';
 
+// interface TableProps {
+//   tableData: Array<{
+//     deputyId: string;
+//     name: string;
+//     site: string;
+//     shiftStartDate: string;
+//     shiftStartTime: string;
+//     cancellationReason: string;
+//   }>;
+// }
+
 const Table = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -49,10 +60,12 @@ const Table = () => {
             className={styles.table_row} />
           <Column
             field="name"
+            header="Employee name"
             headerClassName={styles.table_header}
             className={styles.table_row} />
           <Column
             field="site"
+            header="Site name"
             headerClassName={styles.table_header}
             className={styles.table_row} />
           <Column

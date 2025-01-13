@@ -14,7 +14,6 @@ import {
   scales,
 } from "chart.js";
 import { useEffect, useState } from "react";
-import { callback } from "chart.js/helpers";
 
 ChartJS.register(
   BarElement,

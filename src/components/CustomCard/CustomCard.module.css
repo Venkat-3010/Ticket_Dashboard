@@ -1,10 +1,9 @@
 .card_container{
-    width: 230px;
-    height: 170px;
+    width: 100%;
+    height: 100%;
     border: none;
     border-radius: 1rem;
     background-color: white;
-    padding: 20px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     position: relative;
     overflow: hidden;
@@ -14,6 +13,7 @@
     font-size: 16px;
     font-weight: 400;
     text-align: left;
+    margin: 20px 0 0 20px;
     color: #878787;
 }
 
@@ -28,10 +28,11 @@
     border-radius: 50%;
     width: 90px;
     height: 90px;
+    justify-self: end;
     overflow: hidden;
     position: relative;
     bottom: +40px;
-    right: -140px;
+    right: -10px;
 }
 
 .card_img_container img{
@@ -41,5 +42,4 @@
     transform: translate(-50%, -50%);
     width: 30px;
     height: auto;
-    margin-right: 10px;
 }
