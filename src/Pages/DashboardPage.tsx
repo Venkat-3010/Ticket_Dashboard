@@ -12,7 +12,17 @@ import BarChart from "../components/BarChart/BarChart";
 import PieChart from "../components/PieChart/PieChart";
 
 const DashboardPage = () => {
-  const [data, setData] = useState([]);
+  interface DashboardData {
+    totalControllers: number;
+    openTickets: number;
+    closeTickets: number;
+    cancelTickets: number;
+    openTicketsList: any[];
+    lineChart: any;
+    barChart: any;
+  }
+
+  const [data, setData] = useState<DashboardData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,14 +62,14 @@ const DashboardPage = () => {
           <CustomCard title={'Cancelled Tickets'} color='#FEC53D' countColor='#FEF0CE' count={data?.cancelTickets || 0} img={cancelledTicketsImg} />
         </div>
         <div>
-          <PieChart pieChartData={data}/>
+          {data && <PieChart pieChartData={{ openTickets: data.openTickets, closeTickets: data.closeTickets, cancelTickets: data.cancelTickets }} />}
         </div>
       </div>
       <div>
         <Table tableData={data?.openTicketsList} />
-        <div className={styles.pie_bar_charts} style={{ display: 'flex', gap: '0.5rem'}}>
-          <LineChart lineChartData={data?.lineChart}/>
-          <BarChart barChartData={data?.barChart}/>
+        <div className={styles.pie_bar_charts} style={{ display: 'flex', gap: '0.5rem' }}>
+          <LineChart lineChartData={data?.lineChart} />
+          <BarChart barChartData={data?.barChart} />
         </div>
       </div>
     </main>

@@ -26,7 +26,7 @@ const Table = () => {
     return () => clearInterval(scrollInterval);
   }, []);
 
-  const convertDate = (rowData: []) => {
+  const convertDate = (rowData: { shiftStartDate: string }) => {
     const date = new Date(rowData?.shiftStartDate);
     return date.toLocaleDateString();
   }

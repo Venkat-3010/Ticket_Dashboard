@@ -19,7 +19,7 @@ ChartJS.register(
 
 const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, closeTickets: number, cancelTickets: number } }) => {
 
-  const overAllTickets = pieChartData.openTickets + pieChartData.closeTickets + pieChartData.cancelTickets
+  // const overAllTickets = pieChartData.openTickets + pieChartData.closeTickets + pieChartData.cancelTickets
 
   const data = {
     labels: ["Open Tickets", "Closed Tickets", "Cancelled Tickets"],
@@ -51,24 +51,21 @@ const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, close
       title: {
         display: true,
         text: 'Overall tickets',
-        fontWeight: 25,
-        fontStyle: "bold",
-        position: "top",
       },
-      datalabels: {
-        formatter: (value, context) => {
-          const total = context.dataset.data.reduce((acc: number, val: number) => acc + val, 0);
-          const percentage = ((value / total) * 100).toFixed(1);
-          return `${percentage}%`;
-        },
-        color: "#fff",
-        font: {
-          size: 16,
-          weight: "bold",
-        },
-        anchor: "center",
-        align: "center",
-      },
+      // datalabels: {
+      //   formatter: (value, context) => {
+      //     const total = context.dataset.data.reduce((acc: number, val: number) => acc + val, 0);
+      //     const percentage = ((value / total) * 100).toFixed(1);
+      //     return `${percentage}%`;
+      //   },
+      //   color: "#fff",
+      //   font: {
+      //     size: 16,
+      //     weight: "bold",
+      //   },
+      //   anchor: "center",
+      //   align: "center",
+      // },
     },
   }
 

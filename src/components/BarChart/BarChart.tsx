@@ -93,6 +93,10 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
     plugins: {
       legend: {
         position: 'top' as 'top',
+        labels: {
+            boxWidth: 10,
+            fontStyle: 'bold',
+        }
       },
       title: {
         display: true,
@@ -107,7 +111,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
             size: 12,
           },
           callback: function (value: any): string[] {
-            const label = this.getLabelForValue(value); 
+            const label = data.labels[value];
             return label.split(' ').reduce((lines, word) => {
               const lastLine = lines[lines.length - 1] || '';
               if ((lastLine + word).length > 10) {

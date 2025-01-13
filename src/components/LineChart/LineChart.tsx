@@ -73,6 +73,7 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                 data: openTickets,
                 backgroundColor: '#8280FF',
                 borderColor: '#8280FF',
+                tension: 0.4,
                 borderWidth: 1,
             },
             {
@@ -80,6 +81,7 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                 data: closedTickets,
                 backgroundColor: '#FF9066',
                 borderColor: '#FF9066',
+                tension: 0.4,
                 borderWidth: 1,
             },
         ],
@@ -90,11 +92,15 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
         plugins: {
             legend: {
                 position: 'top' as 'top',
+                labels: {
+                    boxWidth: 10,
+                    fontStyle: 'bold',
+                }
             },
             title: {
                 display: true,
                 text: 'Open & close tickets based on month',
-            }
+            },
         },
         scales: {
             x: {
