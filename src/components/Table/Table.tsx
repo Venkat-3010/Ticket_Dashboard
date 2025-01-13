@@ -51,7 +51,7 @@ const Table = () => {
             header="S no"
             headerClassName={styles.table_header}
             className={styles.table_row}
-            body={(rowData, { rowIndex }) => rowIndex + 1}
+            body={({ rowIndex }) => rowIndex + 1}
           />
           <Column
             field="deputyId"
