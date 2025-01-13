@@ -95,6 +95,25 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                 display: true,
                 text: 'Open & close tickets based on month',
             }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "#848A9C",
+                    font: {
+                        size: 12
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: "#848A9C",
+                    font: {
+                        size: 12
+                    }
+                }
+            }
         }
     }
     return (

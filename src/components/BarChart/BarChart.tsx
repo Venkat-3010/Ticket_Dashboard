@@ -11,8 +11,10 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  scales,
 } from "chart.js";
 import { useEffect, useState } from "react";
+import { callback } from "chart.js/helpers";
 
 ChartJS.register(
   BarElement,
@@ -24,6 +26,7 @@ ChartJS.register(
   Tooltip,
   Legend,
   ArcElement,
+  scales,
 );
 
 interface BarChartData {
@@ -96,9 +99,42 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
         text: 'Tickets based on user',
       },
     },
-  }
-
-  // console.log(visibleData, data)
+    scales: {
+      x: {
+        ticks: {
+          color: '#848A9C',
+          font: {
+            size: 12,
+          },
+          callback: function (value: any): string[] {
+            const label = this.getLabelForValue(value); 
+            return label.split(' ').reduce((lines, word) => {
+              const lastLine = lines[lines.length - 1] || '';
+              if ((lastLine + word).length > 10) {
+                lines.push(word);
+              } else {
+                lines[lines.length - 1] = `${lastLine} ${word}`.trim();
+              }
+              return lines;
+            }, ['']);
+          },
+        },
+      },
+      y: {
+        ticks: {
+          color: '#848A9C',
+          font: {
+            size: 12,
+          },
+        },
+        grid: {
+          display: true,
+          drawBorder: false,
+        },
+      }
+    },
+  };
+  
   return (
     <div className={styles.barChart_container}>
       <Bar data={data} options={options} />
