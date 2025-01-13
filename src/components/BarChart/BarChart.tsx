@@ -23,7 +23,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
 );
 
 interface BarChartData {
@@ -93,7 +93,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
       },
       title: {
         display: true,
-        text: 'Tickets per Employee',
+        text: 'Tickets based on user',
       },
     },
   }

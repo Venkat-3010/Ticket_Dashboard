@@ -87,13 +87,13 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
 
     const options = {
         responsive: true,
-        plugin: {
+        plugins: {
             legend: {
-                position: 'top',
+                position: 'top' as 'top',
             },
             title: {
                 display: true,
-                text: 'Ticket Activity by Month',
+                text: 'Open & close tickets based on month',
             }
         }
     }

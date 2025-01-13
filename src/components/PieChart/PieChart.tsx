@@ -19,7 +19,7 @@ ChartJS.register(
 
 const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, closeTickets: number, cancelTickets: number } }) => {
 
-  // const overAllTickets = pieChartData.openTickets + pieChartData.closeTickets + pieChartData.cancelTickets
+  const overAllTickets = pieChartData.openTickets + pieChartData.closeTickets + pieChartData.cancelTickets
 
   const data = {
     labels: ["Open Tickets", "Closed Tickets", "Cancelled Tickets"],
@@ -47,6 +47,13 @@ const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, close
           boxWidth: 10,
           fontStyle: 'bold',
         },
+      },
+      title: {
+        display: true,
+        text: 'Overall tickets',
+        fontWeight: 25,
+        fontStyle: "bold",
+        position: "top",
       },
       datalabels: {
         formatter: (value, context) => {
