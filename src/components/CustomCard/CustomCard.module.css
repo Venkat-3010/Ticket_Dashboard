@@ -43,3 +43,10 @@
     width: 30px;
     height: auto;
 }
+
+@media (min-height: 1080px) {
+    .card_img_container{
+        bottom: +10px;
+        right: -5px;
+    }
+}

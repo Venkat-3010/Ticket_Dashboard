@@ -1,21 +1,23 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import styles from './Table.module.css';
-import data from '../../data/dummy_table_data.json';
+// import data from '../../data/dummy_table_data.json';
 import { useEffect, useRef } from 'react';
 
-// interface TableProps {
-//   tableData: Array<{
-//     deputyId: string;
-//     name: string;
-//     site: string;
-//     shiftStartDate: string;
-//     shiftStartTime: string;
-//     cancellationReason: string;
-//   }>;
-// }
 
-const Table = () => {
+
+interface TableProps {
+  tableData: Array<{
+    deputyId: string;
+    name: string;
+    site: string;
+    shiftStartDate: string;
+    shiftStartTime: string;
+    cancellationReason: string;
+  }>;
+}
+
+const Table = ({ tableData }: TableProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,12 +48,12 @@ const Table = () => {
     <div className={styles.table_container}>
       <h2 className={styles.table_title}>Open tickets</h2>
       <div className={styles.scrollable_container} ref={scrollRef}>
-        <DataTable value={data} scrollable>
+        <DataTable value={tableData} scrollable>
           <Column
             header="S no"
             headerClassName={styles.table_header}
             className={styles.table_row}
-            body={({ rowIndex }) => rowIndex + 1}
+            body={(_, { rowIndex }) => rowIndex + 1}
           />
           <Column
             field="deputyId"
