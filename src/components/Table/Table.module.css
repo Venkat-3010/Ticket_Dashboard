@@ -29,6 +29,7 @@
 }
 
 .table_row{
-    padding: 0.6rem;
+    padding: 0.6rem 0;
     color: #2B3674;
+    text-align: left;
 }
