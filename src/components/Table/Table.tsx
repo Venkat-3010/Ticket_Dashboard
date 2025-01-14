@@ -4,8 +4,6 @@ import styles from './Table.module.css';
 // import data from '../../data/dummy_table_data.json';
 import { useEffect, useRef } from 'react';
 
-
-
 interface TableProps {
   tableData: Array<{
     deputyId: string;

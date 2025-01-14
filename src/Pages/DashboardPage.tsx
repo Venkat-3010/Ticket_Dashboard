@@ -62,15 +62,15 @@ const DashboardPage = () => {
           <CustomCard title={'Cancelled Tickets'} color='#FEC53D' countColor='#FEF0CE' count={data?.cancelTickets || 0} img={cancelledTicketsImg} />
         </div>
         <div className={styles.dashboadPage_pieChart_container}>
-          {data ? <PieChart pieChartData={{ openTickets: data.openTickets, closeTickets: data.closeTickets, cancelTickets: data.cancelTickets }} /> : <></>}
+          {data ? <PieChart pieChartData={{ openTickets: data?.openTickets, closeTickets: data?.closeTickets, cancelTickets: data?.cancelTickets }} /> : <></>}
         </div>
       </div>
       <div className={styles.dashboardPage_rightContainer}>
-        <Table />
-        {/* <Table tableData={data?.openTicketsList} /> */}
+        {/* <Table /> */}
+        <Table tableData={data?.openTicketsList || []} />
         <div className={styles.dashboadPage_charts_container} >
-          <LineChart lineChartData={data?.lineChart} />
-          <BarChart barChartData={data?.barChart} />
+          <LineChart lineChartData={data?.lineChart || []} />
+          <BarChart barChartData={data?.barChart || []} />
         </div>
       </div>
     </main>
