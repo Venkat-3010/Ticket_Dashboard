@@ -1,6 +1,16 @@
+/* .card_container{
+    width: 100%;
+    height: 22vh;
+    border: none;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+} */
+
 .card_container{
     width: 100%;
-    height: 100%;
     border: none;
     border-radius: 1rem;
     background-color: white;
@@ -26,8 +36,8 @@
 
 .card_img_container{
     border-radius: 50%;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     justify-self: end;
     overflow: hidden;
     position: relative;
@@ -49,4 +59,20 @@
         bottom: +10px;
         right: -5px;
     }
+}
+
+.custome_cardimg_container{
+    position: absolute;
+    background: rgb(236, 236, 249);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -10px;
+    bottom: -14px;
+}
+.custome_cardimg_container img{
+    width: 50%;
 }

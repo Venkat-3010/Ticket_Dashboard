@@ -10,10 +10,11 @@ import Table from "../components/Table/Table";
 import LineChart from "../components/LineChart/LineChart";
 import BarChart from "../components/BarChart/BarChart";
 import PieChart from "../components/PieChart/PieChart";
+import { color } from "chart.js/helpers";
 
 const DashboardPage = () => {
   interface DashboardData {
-    totalControllers: number;
+    totalControllers: number|any;
     openTickets: number;
     closeTickets: number;
     cancelTickets: number;
@@ -22,7 +23,7 @@ const DashboardPage = () => {
     barChart: any;
   }
 
-  const [data, setData] = useState<DashboardData | null>(null);
+  const [data, setData] = useState<DashboardData | null|any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +42,12 @@ const DashboardPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-
-  console.log(data);
+const customeCardData=[
+  { title:"Controller",color:"#8280FF",countColor:"#ECECF9",countKey:"totalControllers",img:controllerImg},
+  { title:"Open Tickets",color:"#FF9066",countColor:"#FFE3D9",countKey:"openTickets",img:openTicketsImg},
+  { title:"Closed Tickets",color:"#4AD991",countColor:"#D1F5E3",countKey:"closeTickets",img:closetTicketsImg},
+  { title:"Cancelled Tickets",color:"#FEC53D",countColor:"#FEF0CE",countKey:"cancelTickets",img:cancelledTicketsImg}
+]
 
   return (
     <main className={styles.dashboadPage_container}>
@@ -55,18 +60,21 @@ const DashboardPage = () => {
             Ticketing System
           </div>
         </div>
-        <div className={styles.dashboadPage_cards_container}>
-          <CustomCard title={'Controller'} color='#8280FF' countColor='#ECECF9' count={data?.totalControllers || 0} img={controllerImg} />
-          <CustomCard title={'Open Tickets'} color='#FF9066' countColor='#FFE3D9' count={data?.openTickets || 0} img={openTicketsImg} />
-          <CustomCard title={'Closed Tickets'} color='#4AD991' countColor='#D1F5E3' count={data?.closeTickets || 0} img={closetTicketsImg} />
-          <CustomCard title={'Cancelled Tickets'} color='#FEC53D' countColor='#FEF0CE' count={data?.cancelTickets || 0} img={cancelledTicketsImg} />
+        <div className={styles.dashboardpage_customeCard_continer}>
+          {
+            customeCardData?.map((obj:any,index:number)=>(
+              <div style={{width:"48%"}}>
+              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data[obj?.countKey] || 0} img={obj?.img} /> */}
+              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} />
+           </div>
+            ))
+          }
         </div>
         <div className={styles.dashboadPage_pieChart_container}>
           {data ? <PieChart pieChartData={{ openTickets: data?.openTickets, closeTickets: data?.closeTickets, cancelTickets: data?.cancelTickets }} /> : <></>}
         </div>
       </div>
       <div className={styles.dashboardPage_rightContainer}>
-        {/* <Table /> */}
         <Table tableData={data?.openTicketsList || []} />
         <div className={styles.dashboadPage_charts_container} >
           <LineChart lineChartData={data?.lineChart || []} />
