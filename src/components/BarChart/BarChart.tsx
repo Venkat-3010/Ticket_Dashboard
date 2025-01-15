@@ -97,17 +97,17 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
             fontStyle: 'bold',
         }
       },
-      title: {
-        display: true,
-        text: 'Tickets based on user',
-      },
+      // title: {
+      //   display: true,
+      //   text: 'Tickets based on user',
+      // },
     },
     scales: {
       x: {
         ticks: {
           color: '#848A9C',
           font: {
-            size: 12,
+            size: 11,
           },
           callback: function (value: any): string[] {
             const label = data.labels[value];
@@ -140,6 +140,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
   
   return (
     <div className={styles.barChart_container}>
+    <div className={styles.barChart_heading}>Open & close tickets based on month</div>
       <Bar data={data} options={options} />
     </div>
   )

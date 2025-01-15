@@ -10,11 +10,10 @@ import Table from "../components/Table/Table";
 import LineChart from "../components/LineChart/LineChart";
 import BarChart from "../components/BarChart/BarChart";
 import PieChart from "../components/PieChart/PieChart";
-import { color } from "chart.js/helpers";
 
 const DashboardPage = () => {
   interface DashboardData {
-    totalControllers: number|any;
+    totalControllers: number[]|any;
     openTickets: number;
     closeTickets: number;
     cancelTickets: number;
@@ -64,8 +63,8 @@ const customeCardData=[
           {
             customeCardData?.map((obj:any,index:number)=>(
               <div style={{width:"48%"}}>
-              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data[obj?.countKey] || 0} img={obj?.img} /> */}
-              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} />
+              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data ? data[obj?.countKey] || 0 : 0} img={obj?.img} />
+              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} /> */}
            </div>
             ))
           }

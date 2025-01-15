@@ -1,6 +1,6 @@
 .lineChart_container{
     background-color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     height: 100%;
@@ -10,4 +10,12 @@
     align-items: center;
     gap: 1rem;
     flex-direction: column;
+}
+
+.lineChart_heading{
+    align-self: flex-start;
+    margin: 1rem 0 0 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2B3674;
 }
