@@ -107,7 +107,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
         ticks: {
           color: '#848A9C',
           font: {
-            size: 11,
+            size: 10,
           },
           callback: function (value: any): string[] {
             const label = data.labels[value];
