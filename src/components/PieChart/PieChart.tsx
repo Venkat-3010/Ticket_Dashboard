@@ -48,10 +48,10 @@ const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, close
           fontStyle: 'bold',
         },
       },
-      title: {
-        display: true,
-        text: 'Overall tickets',
-      },
+      // title: {
+      //   display: true,
+      //   text: 'Overall tickets',
+      // },
       // datalabels: {
       //   formatter: (value, context) => {
       //     const total = context.dataset.data.reduce((acc: number, val: number) => acc + val, 0);
@@ -71,6 +71,7 @@ const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, close
 
   return (
     <div className={styles.pieChart_containerr}>
+      <div className={styles.pieChart_heading}>Overall tickets</div>
       <Pie data={data} options={options} />
     </div>
   )

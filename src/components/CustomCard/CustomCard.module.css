@@ -30,7 +30,7 @@
 
 .card_count{
     font-size: 45px;
-    font-weight: 900;
+    font-weight: 600;
     text-align: left;
     padding: 1.5rem;
 }
@@ -74,6 +74,7 @@
     right: -10px;
     bottom: -14px;
 }
+
 .custome_cardimg_container img{
     width: 50%;
 }

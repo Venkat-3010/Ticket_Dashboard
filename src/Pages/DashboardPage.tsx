@@ -10,11 +10,10 @@ import Table from "../components/Table/Table";
 import LineChart from "../components/LineChart/LineChart";
 import BarChart from "../components/BarChart/BarChart";
 import PieChart from "../components/PieChart/PieChart";
-import { color } from "chart.js/helpers";
 
 const DashboardPage = () => {
   interface DashboardData {
-    totalControllers: number|any;
+    totalControllers: number[]|any;
     openTickets: number;
     closeTickets: number;
     cancelTickets: number;

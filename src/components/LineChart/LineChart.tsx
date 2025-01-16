@@ -97,10 +97,10 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                     fontStyle: 'bold',
                 }
             },
-            title: {
-                display: true,
-                text: 'Open & close tickets based on month',
-            },
+            // title: {
+            //     display: true,
+            //     text: 'Open & close tickets based on month',
+            // },
         },
         scales: {
             x: {
@@ -109,6 +109,9 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                     font: {
                         size: 12
                     }
+                },
+                grid: {
+                    display: false
                 }
             },
             y: {
@@ -118,12 +121,16 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                     font: {
                         size: 12
                     }
+                },
+                grid: {
+                    display: false
                 }
             }
         }
     }
     return (
         <div className={styles.lineChart_container}>
+        <div className={styles.lineChart_heading}>Open & close tickets based on month</div>
             <Line data={data} options={options} />
         </div>
     )
