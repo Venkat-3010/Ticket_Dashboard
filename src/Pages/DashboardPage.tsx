@@ -63,7 +63,7 @@ const customeCardData=[
         <div className={styles.dashboardpage_customeCard_continer}>
           {
             customeCardData?.map((obj:any,index:number)=>(
-              <div style={{width:"48%"}}>
+              <div className={styles.customeCard_Continer_space}>
               {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data[obj?.countKey] || 0} img={obj?.img} /> */}
               <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} />
            </div>

@@ -73,3 +73,19 @@
     flex-wrap: wrap;
     gap: 1rem;
 }
+
+.customeCard_Continer_space{
+ width: 48%;
+}
+
+@media screen and (min-width: 950px) and  (max-width: 1400px){
+    .customeCard_Continer_space{
+        width: 47% !important;
+       }
+  }
+
+  @media screen and (min-width: 400px) and  (max-width: 950px){
+    .customeCard_Continer_space{
+        width: 46% !important;
+       }
+  }
