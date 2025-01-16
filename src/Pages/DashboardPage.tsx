@@ -36,7 +36,7 @@ const DashboardPage = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 3600000);
+    const interval = setInterval(fetchData, 1800000 );
 
     return () => clearInterval(interval);
   }, []);
@@ -63,8 +63,8 @@ const customeCardData=[
           {
             customeCardData?.map((obj:any,index:number)=>(
               <div className={styles.customeCard_Continer_space}>
-              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data[obj?.countKey] || 0} img={obj?.img} /> */}
-              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} />
+              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data ? data[obj?.countKey] || 0 : 0} img={obj?.img} />
+              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} /> */}
            </div>
             ))
           }
