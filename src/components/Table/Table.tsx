@@ -84,6 +84,12 @@ const Table = ({ tableData }: TableProps) => {
             header="Reason"
             headerClassName={styles.table_header}
             className={styles.table_row} />
+          <Column
+            field="assignedController"
+            body={(rowData) => rowData.assignedController || "N/A"}
+            header="Controller name"
+            headerClassName={styles.table_header}
+            className={styles.table_row} />
         </DataTable>
       </div>
     </div>

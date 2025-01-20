@@ -27,7 +27,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://taliceplannerapi.azurewebsites.net/Dashboard/Init');
+        const response = await fetch('https://taliceplannerapi.azurewebsites.net/api');
         const json = await response.json();
         setData(json);
       } catch (error) {
@@ -55,9 +55,9 @@ const customeCardData=[
           <div className={styles.dashboardPage_logo}>
             <img src={logo} alt="Logo" />
           </div>
-          <div className={styles.dashboadPage_header}>
+          {/* <div className={styles.dashboadPage_header}>
             Ticketing System
-          </div>
+          </div> */}
         </div>
         <div className={styles.dashboardpage_customeCard_continer}>
           {
