@@ -1,7 +1,6 @@
 .pieChart_containerr{
     background-color: white;
-    height: 100%;
-    margin-top: 1rem;
+    height: 110%;
     width: 100%;
     border-radius: 1rem;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -14,7 +13,7 @@
 
 .pieChart_heading{
     align-self: flex-start;
-    margin: 1rem 0 0 1rem;
+    /* margin: 1rem 0 0 1rem; */
     font-size: 1rem;
     font-weight: bold;
     color: #2B3674;

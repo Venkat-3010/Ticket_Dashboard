@@ -1,4 +1,3 @@
-import { Card } from 'primereact/card'
 import styles from "./CustomCard.module.css";
 
 interface CardProps {

@@ -22,7 +22,7 @@ const PieChart = ({ pieChartData }: { pieChartData: { openTickets: number, close
   // const overAllTickets = pieChartData.openTickets + pieChartData.closeTickets + pieChartData.cancelTickets
 
   const data = {
-    labels: ["Open Tickets", "Closed Tickets", "Cancelled Tickets"],
+    labels: ["Open", "Closed", "Cancelled"],
     datasets: [{
       data: [pieChartData.openTickets, pieChartData.closeTickets, pieChartData.cancelTickets],
       backgroundColor: [

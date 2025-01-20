@@ -111,7 +111,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
           },
           callback: function (value: any): string[] {
             const label = data.labels[value];
-            return label.split(' ').reduce((lines, word) => {
+            return label?.split(' ')?.reduce((lines, word) => {
               const lastLine = lines[lines.length - 1] || '';
               if ((lastLine + word).length > 10) {
                 lines.push(word);
@@ -140,7 +140,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
   
   return (
     <div className={styles.barChart_container}>
-    <div className={styles.barChart_heading}>Open & close tickets based on month</div>
+    <div className={styles.barChart_heading}>Tickets based on user</div>
       <Bar data={data} options={options} />
     </div>
   )

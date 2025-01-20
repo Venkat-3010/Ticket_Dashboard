@@ -55,9 +55,9 @@ const customeCardData=[
           <div className={styles.dashboardPage_logo}>
             <img src={logo} alt="Logo" />
           </div>
-          <div className={styles.dashboadPage_header}>
+          {/* <div className={styles.dashboadPage_header}>
             Ticketing System
-          </div>
+          </div> */}
         </div>
         <div className={styles.dashboardpage_customeCard_continer}>
           {
