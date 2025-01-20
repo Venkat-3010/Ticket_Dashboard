@@ -42,10 +42,10 @@ const LoginPage = () => {
             const res = await axios.get(`https://taliceplannerapi.azurewebsites.net/Login/AccessToken?code=${code}`);
             // console.log(res)
             if (res?.data?.token) {
-                console.log('Access token fetched successfully:', res.data.token);
+                // console.log('Access token fetched successfully:', res.data.token);
                 localStorage.setItem('loginToken', res.data.token)
                 setCookie('loginToken', res.data.token, { path: '/', secure: true });
-                navigate('/dashboard');
+                navigate('/home');
             } else {
                 console.log('Access token is missing.');
                 window.location.href = '/';
