@@ -37,7 +37,7 @@ interface BarChartData {
 
 const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
   const [visibleData, setVisibleData] = useState<BarChartData[]>([]);
-
+  const [yaxisMax, setYaxisMax] = useState<number>();
   const totalData = barChartData || [];
   const windowSize = 6;
   const scrollSpeed = 2000;
@@ -58,6 +58,11 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
 
     return () => clearInterval(interval);
   }, [totalData]);
+
+  useEffect(() => {
+    let max = Math.max(...barChartData?.map(item => Math.max(item.openTickets, item.closeTickets, item.cancelTickets)));
+    setYaxisMax(max);
+  }, [barChartData])
 
   const data = {
     labels: visibleData.map(item => item.employeeName),
@@ -134,6 +139,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
           display: true,
           drawBorder: false,
         },
+        suggestedMax: `${yaxisMax}`
       }
     },
   };

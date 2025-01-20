@@ -35,7 +35,7 @@ interface ChartData {
 
 const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
     const [visibleData, setVisibleData] = useState<ChartData[]>([]);
-
+    const [yaxisMax, setYaxisMax] = useState<number>();
     const totalData = lineChartData || []; 
     const windowSize = 6; 
     const scrollSpeed = 2000; 
@@ -60,6 +60,11 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
 
         return () => clearInterval(interval);
     }, [totalData]);
+
+    useEffect(() => {
+        const maxTickets = Math.max(...lineChartData?.map(item => Math.max(item.openTickets, item.closeTickets)));
+        setYaxisMax(maxTickets);
+    }, [lineChartData])
 
     const months = visibleData?.map(item => item?.month + " " + item?.year);
     const openTickets = visibleData?.map(item => item?.openTickets);
@@ -124,7 +129,8 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                 },
                 grid: {
                     display: false
-                }
+                },
+                suggestedMax: `${yaxisMax}`
             }
         }
     }
