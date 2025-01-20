@@ -1,15 +1,15 @@
 import styles from "./DashboardPage.module.css";
-import logo from "../assets/logo.png"
-import controllerImg from "../assets/controller.png";
-import openTicketsImg from "../assets/openTickets.png";
-import closetTicketsImg from "../assets/closedTickets.png";
-import cancelledTicketsImg from "../assets/cancelledTickets.png";
-import CustomCard from "../components/CustomCard/CustomCard";
+import logo from "../../assets/logo.png"
+import controllerImg from "../../assets/controller.png";
+import openTicketsImg from "../../assets/openTickets.png";
+import closetTicketsImg from "../../assets/closedTickets.png";
+import cancelledTicketsImg from "../../assets/cancelledTickets.png";
+import CustomCard from "../../components/CustomCard/CustomCard";
 import { useEffect, useState } from "react";
-import Table from "../components/Table/Table";
-import LineChart from "../components/LineChart/LineChart";
-import BarChart from "../components/BarChart/BarChart";
-import PieChart from "../components/PieChart/PieChart";
+import Table from "../../components/Table/Table";
+import LineChart from "../../components/LineChart/LineChart";
+import BarChart from "../../components/BarChart/BarChart";
+import PieChart from "../../components/PieChart/PieChart";
 
 const DashboardPage = () => {
   interface DashboardData {
@@ -27,7 +27,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://taliceplannerapi.azurewebsites.net/api');
+        const response = await fetch('https://taliceplannerapi.azurewebsites.net/dashboard/init');
         const json = await response.json();
         setData(json);
       } catch (error) {

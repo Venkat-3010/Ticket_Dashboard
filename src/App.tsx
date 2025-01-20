@@ -1,13 +1,20 @@
 import './App.css'
 import "primereact/resources/primereact.min.css"
-import DashboardPage from './Pages/DashboardPage'
+import DashboardPage from './Pages/DashboardPage/DashboardPage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import LoginPage from './Pages/LoginPage/LoginPage'
+import { useCookies } from 'react-cookie'
 
 function App() {
+  const [cookie, ] = useCookies();
 
   return (
-    <>
-      <DashboardPage />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />}/>
+        <Route path="/dashboard" element={cookie.token ? <DashboardPage /> : <LoginPage />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
