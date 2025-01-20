@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />}/>
-        <Route path="/dashboard" element={cookie.token ? <DashboardPage /> : <LoginPage />}/>
+        <Route path="/dashboard" element={cookie.loginToken ? <DashboardPage /> : <LoginPage />}/>
       </Routes>
     </BrowserRouter>
   )
