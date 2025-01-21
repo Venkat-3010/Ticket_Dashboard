@@ -9,7 +9,7 @@ import { Toast } from 'primereact/toast';
 
 const LoginPage = () => {
     const toast = useRef<Toast>(null);
-    const [, setCookie] = useCookies();
+    const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
 
     const onButtonClick = () => {
@@ -21,7 +21,7 @@ const LoginPage = () => {
             await axios.get('https://taliceplannerapi.azurewebsites.net/Login/SSOUrl').then(
                 async (res) => {
                     window.location.href = res?.data;
-                    getAccessToken();
+                    getAccessToken(false);
                 }
             )
         } catch (err) {
@@ -29,23 +29,30 @@ const LoginPage = () => {
         }
     })
 
-    const getAccessToken = async () => {
+    const getAccessToken = async (isAuthPresent:boolean) => {
         try {
             const url = new URL(window.location.href);
             // console.log(url)
-            const code = url.searchParams.get('code');
+
+            let code = url.searchParams.get('code');
+            if(isAuthPresent){
+                code = cookies.loginToken;
+            }else{
+                code = url.searchParams.get('code');
+            }
             // console.log(code)
             if (!code) {
                 console.log('Authorization code is missing.');
+                return;
             }
 
             const res = await axios.get(`https://taliceplannerapi.azurewebsites.net/Login/AccessToken?code=${code}`);
             // console.log(res)
             if (res?.data?.token) {
                 // console.log('Access token fetched successfully:', res.data.token);
-                localStorage.setItem('loginToken', res.data.token)
+                // localStorage.setItem('loginToken', res.data.token)
                 setCookie('loginToken', res.data.token, { path: '/', secure: true });
-                navigate('/home');
+                navigate('/');
             } else {
                 console.log('Access token is missing.');
                 window.location.href = '/';
@@ -62,8 +69,14 @@ const LoginPage = () => {
 
 
     useEffect(() => {
-        getAccessToken();
+        checkAuthCookie()
     }, []);
+
+    const checkAuthCookie = () => {
+        if(cookies.loginToken){
+            getAccessToken(true);
+        }
+    }
 
     return (
         <div>
@@ -89,7 +102,7 @@ const LoginPage = () => {
                         <div className={styles.LoginPage_bottom_logo_img}>
                             <img src={logo} alt='logo not found' style={{ width: "20vw", textAlign: "center", objectFit: "contain" }} />
                         </div>
-                        <p>© 2024 Talice. All rights reserved.</p>
+                        <p>{`© ${new Date().getFullYear()} Talice. All rights reserved.`}</p>
                     </div>
                 </div>
             </div>
