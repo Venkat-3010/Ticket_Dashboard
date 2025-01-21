@@ -9,7 +9,7 @@ import { Toast } from 'primereact/toast';
 
 const LoginPage = () => {
     const toast = useRef<Toast>(null);
-    const [cookies, setCookie] = useCookies();
+    const [, setCookie] = useCookies();
     const navigate = useNavigate();
     const auth_code = 'https://taliceplannerapi.azurewebsites.net/Login'
 
@@ -29,11 +29,10 @@ const LoginPage = () => {
         }
     })
 
-    const getAccessToken = async (isAuthPresent:boolean) => {
+    const getAccessToken = async () => {
         try {
-            const code = isAuthPresent ? cookies.loginToken : new URL(window.location.href).searchParams.get('code');
+            const code = new URL(window.location.href).searchParams.get('code');
             if (!code) {
-                console.log('Authorization code is missing.');
                 return;
             }
 
@@ -60,16 +59,8 @@ const LoginPage = () => {
 
 
     useEffect(() => {
-        const token = cookies.loginToken;
-        if (token) {
-            getAccessToken(true);
-        } else {
-            const code = new URL(window.location.href).searchParams.get('code');
-            if (code) {
-                getAccessToken(false);
-            }
-        }
-    }, [cookies]);
+        getAccessToken();
+    }, []);
 
     return (
         <div>
