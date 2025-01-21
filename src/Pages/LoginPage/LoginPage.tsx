@@ -11,6 +11,7 @@ const LoginPage = () => {
     const toast = useRef<Toast>(null);
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
+    const auth_code = 'https://taliceplannerapi.azurewebsites.net/Login'
 
     const onButtonClick = () => {
         getAuthUrl();
@@ -18,10 +19,9 @@ const LoginPage = () => {
 
     const getAuthUrl = (async () => {
         try {
-            await axios.get('https://taliceplannerapi.azurewebsites.net/Login/SSOUrl').then(
+            await axios.get(`${auth_code}/SSOUrl`).then(
                 async (res) => {
                     window.location.href = res?.data;
-                    getAccessToken(false);
                 }
             )
         } catch (err) {
@@ -31,22 +31,13 @@ const LoginPage = () => {
 
     const getAccessToken = async (isAuthPresent:boolean) => {
         try {
-            const url = new URL(window.location.href);
-            // console.log(url)
-
-            let code = url.searchParams.get('code');
-            if(isAuthPresent){
-                code = cookies.loginToken;
-            }else{
-                code = url.searchParams.get('code');
-            }
-            // console.log(code)
+            const code = isAuthPresent ? cookies.loginToken : new URL(window.location.href).searchParams.get('code');
             if (!code) {
                 console.log('Authorization code is missing.');
                 return;
             }
 
-            const res = await axios.get(`https://taliceplannerapi.azurewebsites.net/Login/AccessToken?code=${code}`);
+            const res = await axios.get(`${auth_code}/AccessToken?code=${code}`);
             // console.log(res)
             if (res?.data?.token) {
                 // console.log('Access token fetched successfully:', res.data.token);
@@ -54,8 +45,8 @@ const LoginPage = () => {
                 setCookie('loginToken', res.data.token, { path: '/', secure: true });
                 navigate('/');
             } else {
-                console.log('Access token is missing.');
                 window.location.href = '/';
+                console.log('Access token is missing.');
             }
         } catch (err) {
             console.log('Error fetching access token:', err);
@@ -69,14 +60,16 @@ const LoginPage = () => {
 
 
     useEffect(() => {
-        checkAuthCookie()
-    }, []);
-
-    const checkAuthCookie = () => {
-        if(cookies.loginToken){
+        const token = cookies.loginToken;
+        if (token) {
             getAccessToken(true);
+        } else {
+            const code = new URL(window.location.href).searchParams.get('code');
+            if (code) {
+                getAccessToken(false);
+            }
         }
-    }
+    }, [cookies]);
 
     return (
         <div>
