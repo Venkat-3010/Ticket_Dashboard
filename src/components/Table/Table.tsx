@@ -1,7 +1,7 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import styles from './Table.module.css';
-import data from '../../data/dummy_table_data.json';
+// import data from '../../data/dummy_table_data.json';
 import { useEffect, useRef } from 'react';
 
 interface ExtendedDataTable extends DataTable<any> {
@@ -50,7 +50,7 @@ const Table = ({ tableData }: TableProps) => {
     <div className={styles.table_container}>
       <h2 className={styles.table_title}>Open tickets</h2>
       <div className={styles.scrollable_container}>
-        <DataTable value={data} scrollable scrollHeight='350px' ref={(el: ExtendedDataTable | null) => {
+        <DataTable value={tableData} scrollable scrollHeight='45vh' ref={(el: ExtendedDataTable | null) => {
           if (el) {
             scrollRef.current = el.getElement().querySelector('.p-datatable-wrapper');
           }
