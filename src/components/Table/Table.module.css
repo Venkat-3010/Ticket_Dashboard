@@ -12,7 +12,7 @@
 }
 
 .table_title {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
     text-align: left;
     color: #2B3674;
@@ -35,5 +35,4 @@
     text-align: left;
     text-wrap: wrap;
     font-size: 0.85rem;
-    width: 1%;
 }

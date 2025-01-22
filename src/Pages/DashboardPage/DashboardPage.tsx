@@ -13,7 +13,7 @@ import PieChart from "../../components/PieChart/PieChart";
 
 const DashboardPage = () => {
   interface DashboardData {
-    totalControllers: number[]|any;
+    totalControllers: number[] | any;
     openTickets: number;
     closeTickets: number;
     cancelTickets: number;
@@ -22,7 +22,7 @@ const DashboardPage = () => {
     barChart: any;
   }
 
-  const [data, setData] = useState<DashboardData | null|any>(null);
+  const [data, setData] = useState<DashboardData | null | any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,17 +36,17 @@ const DashboardPage = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 1800000 );
+    const interval = setInterval(fetchData, 1800000);
 
     return () => clearInterval(interval);
   }, []);
 
-const customeCardData=[
-  { title:"Controller",color:"#8280FF",countColor:"#ECECF9",countKey:"totalControllers",img:controllerImg},
-  { title:"Open Tickets",color:"#FF9066",countColor:"#FFE3D9",countKey:"openTickets",img:openTicketsImg},
-  { title:"Closed Tickets",color:"#4AD991",countColor:"#D1F5E3",countKey:"closeTickets",img:closetTicketsImg},
-  { title:"Cancelled Tickets",color:"#FEC53D",countColor:"#FEF0CE",countKey:"cancelTickets",img:cancelledTicketsImg}
-]
+  const customeCardData = [
+    { title: "Controllers", color: "#8280FF", countColor: "#ECECF9", countKey: "totalControllers", img: controllerImg },
+    { title: "Open Tickets", color: "#FF9066", countColor: "#FFE3D9", countKey: "openTickets", img: openTicketsImg },
+    { title: "Closed Tickets", color: "#4AD991", countColor: "#D1F5E3", countKey: "closeTickets", img: closetTicketsImg },
+    { title: "Cancelled Tickets", color: "#FEC53D", countColor: "#FEF0CE", countKey: "cancelTickets", img: cancelledTicketsImg }
+  ]
 
   return (
     <main className={styles.dashboadPage_container}>
@@ -61,11 +61,11 @@ const customeCardData=[
         </div>
         <div className={styles.dashboardpage_customeCard_continer}>
           {
-            customeCardData?.map((obj:any,index:number)=>(
+            customeCardData?.map((obj: any, index: number) => (
               <div className={styles.customeCard_Continer_space}>
-              <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data ? data[obj?.countKey] || 0 : 0} img={obj?.img} />
-              {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} /> */}
-           </div>
+                <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={data ? data[obj?.countKey] || 0 : 0} img={obj?.img} />
+                {/* <CustomCard key={index} title={obj?.title} color={obj?.color} countColor={obj?.countColor} count={ 0} img={obj?.img} /> */}
+              </div>
             ))
           }
         </div>
