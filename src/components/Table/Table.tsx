@@ -1,8 +1,12 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import styles from './Table.module.css';
-// import data from '../../data/dummy_table_data.json';
+import data from '../../data/dummy_table_data.json';
 import { useEffect, useRef } from 'react';
+
+interface ExtendedDataTable extends DataTable<any> {
+  getElement: () => HTMLDivElement;
+}
 
 interface TableProps {
   tableData: Array<{
@@ -16,7 +20,7 @@ interface TableProps {
 }
 
 const Table = ({ tableData }: TableProps) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<any>(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -24,7 +28,7 @@ const Table = ({ tableData }: TableProps) => {
 
     const startScrolling = () => {
       scrollInterval = setInterval(() => {
-        if (scrollContainer && scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
+        if (scrollContainer && scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 2) {
           scrollContainer.scrollTop = 0;
         } else if (scrollContainer) {
           scrollContainer.scrollTop += 1;
@@ -35,7 +39,7 @@ const Table = ({ tableData }: TableProps) => {
     startScrolling();
 
     return () => clearInterval(scrollInterval);
-  }, []);
+  }, [scrollRef]);
 
   const convertDate = (rowData: { shiftStartDate: string }) => {
     const date = new Date(rowData?.shiftStartDate);
@@ -45,10 +49,14 @@ const Table = ({ tableData }: TableProps) => {
   return (
     <div className={styles.table_container}>
       <h2 className={styles.table_title}>Open tickets</h2>
-      <div className={styles.scrollable_container} ref={scrollRef}>
-        <DataTable value={tableData} scrollable>
+      <div className={styles.scrollable_container}>
+        <DataTable value={data} scrollable scrollHeight='350px' ref={(el: ExtendedDataTable | null) => {
+          if (el) {
+            scrollRef.current = el.getElement().querySelector('.p-datatable-wrapper');
+          }
+        }}>
           <Column
-            header="S no"
+            header="Sl no"
             headerClassName={styles.table_header}
             className={styles.table_row}
             body={(_, { rowIndex }) => rowIndex + 1}
