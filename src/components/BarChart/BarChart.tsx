@@ -132,7 +132,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
         ticks: {
           color: '#848A9C',
           font: {
-            size: 12,
+            size: 10,
           },
         },
         grid: {
@@ -146,7 +146,7 @@ const BarChart = ({ barChartData }: { barChartData: BarChartData[] }) => {
   
   return (
     <div className={styles.barChart_container}>
-    <div className={styles.barChart_heading}>Tickets based on user</div>
+    <div className={styles.barChart_heading}>Tickets based on controllers</div>
       <Bar data={data} options={options} />
     </div>
   )

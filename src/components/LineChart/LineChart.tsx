@@ -74,7 +74,7 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
         labels: months,
         datasets: [
             {
-                label: 'Open Tickets',
+                label: 'Tickets Opened',
                 data: openTickets,
                 backgroundColor: '#8280FF',
                 borderColor: '#8280FF',
@@ -82,7 +82,7 @@ const LineChart = ({ lineChartData = [] }: { lineChartData: ChartData[] }) => {
                 borderWidth: 1,
             },
             {
-                label: 'Closed Tickets',
+                label: 'Tickets Closed',
                 data: closedTickets,
                 backgroundColor: '#FF9066',
                 borderColor: '#FF9066',

@@ -33,7 +33,7 @@ const Table = ({ tableData }: TableProps) => {
         } else if (scrollContainer) {
           scrollContainer.scrollTop += 1;
         }
-      }, 40);
+      }, 70);
     };
 
     startScrolling();
